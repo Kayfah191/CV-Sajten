@@ -1,10 +1,10 @@
 namespace CV_Sajten.Models;
 public class Meddelanden
 {
-    public int id { get; set; }
-    public string innehall { get; set; }
-    public bool harLasts { get; set; }
-    public DateTime datum { get; set; }
+    public int ID { get; set; }
+    public string Innehall { get; set; }
+    public bool HarLasts { get; set; }
+    public DateTime Datum { get; set; }
     
     public int AvsandareID { get; set; } 
     public int MottagareID { get; set; } 
