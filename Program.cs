@@ -1,3 +1,6 @@
+using CV_Sajten.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace CV_Sajten
 {
     public class Program
@@ -9,6 +12,8 @@ namespace CV_Sajten
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDbContext<DatabasContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DatabasContext")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

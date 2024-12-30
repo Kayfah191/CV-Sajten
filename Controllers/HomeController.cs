@@ -5,7 +5,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace CV_Sajten.Controllers
 {
     public class HomeController : Controller
+
+
     {
+
+        private DatabasContext anvandare;
+        public HomeController(DatabasContext AnvandareService)
+        {
+            anvandare = AnvandareService;
+        }
+
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)

@@ -10,6 +10,8 @@
 
         public Boolean isPrivat { get; set; }
           
-        public string BildAdress { get; set; } 
-      }
+        public string BildAdress { get; set; }
+        public virtual ICollection<Cv> Cvs { get; set; } = new List<Cv>();
+    }
+
 }
