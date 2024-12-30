@@ -16,12 +16,24 @@ namespace CV_Sajten.Models
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Cv>().HasData(
-                new Cv { });
+                new Cv {
+                    ID = 1,
+                    Kompetenser = "C#, .NET, SQL, Azure",
+                    Utbildning = "Civilingenjör i Datateknik, KTH",
+                    Erfarenheter = "3 års erfarenhet som systemutvecklare på TechCorp",
+                    AnvandareID = 1001
+                });
                
             modelBuilder.Entity<Anvandare>().HasData(
                 new Anvandare
 
                 {
+                    ID = 1,
+                    Namn = "Anna Andersson",
+                    Email = "anna.andersson@example.com",
+                    isPrivat = true,
+                    BildAdress = "https://example.com/images/anna.jpg",
+
 
                 });
         }

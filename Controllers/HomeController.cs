@@ -18,9 +18,10 @@ namespace CV_Sajten.Controllers
 
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DatabasContext service)
         {
             _logger = logger;
+            anvandare = service;
         }
 
         public IActionResult Index()

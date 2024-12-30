@@ -1,6 +1,6 @@
 ﻿namespace CV_Sajten.Models
 {
-    public class Service:List<Anvandare>
+    public class Service:List<Cv>
     {
         public Service()
         {
@@ -9,14 +9,14 @@
 
         public void SampleData()
         {
-            this.Add(new Anvandare
+            this.Add(new Cv
             {
-            
-      Namn ="Rickard",
-     Email="hhh@gmail.com",
-     isPrivat=true,
-      BildAdress = "",
-    }
+                ID = 1,
+                Kompetenser = "C#, .NET, SQL, Azure",
+                Utbildning = "Civilingenjör i Datateknik, KTH",
+                Erfarenheter = "3 års erfarenhet som systemutvecklare på TechCorp",
+                AnvandareID = 1001
+            }
                 );
         }
     }
