@@ -21,7 +21,7 @@ namespace CV_Sajten.Models
                     Kompetenser = "C#, .NET, SQL, Azure",
                     Utbildning = "Civilingenjör i Datateknik, KTH",
                     Erfarenheter = "3 års erfarenhet som systemutvecklare på TechCorp",
-                    AnvandareID = 1001
+                    AnvandareID = 1
                 });
                
             modelBuilder.Entity<Anvandare>().HasData(
