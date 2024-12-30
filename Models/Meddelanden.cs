@@ -5,6 +5,10 @@ public class Meddelanden
     public string innehall { get; set; }
     public bool harLasts { get; set; }
     public DateTime datum { get; set; }
+    
+    public int AvsandareID { get; set; } 
+    public int MottagareID { get; set; } 
 
-    //TODO foreign-keys =D
+    public Anvandare Avsandare { get; set; } 
+    public Anvandare Mottagare { get; set; } 
 }
