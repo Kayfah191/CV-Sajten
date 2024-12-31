@@ -10,18 +10,15 @@ namespace CV_Sajten.Controllers
     {
 
         private DatabasContext anvandare;
-        public HomeController(DatabasContext AnvandareService)
-        {
-            anvandare = AnvandareService;
-        }
+
 
 
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, DatabasContext service)
+        public HomeController(ILogger<HomeController> logger, DatabasContext AnvandareService)
         {
             _logger = logger;
-            anvandare = service;
+            anvandare = AnvandareService;
         }
 
         public IActionResult Index()

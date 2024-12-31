@@ -56,6 +56,14 @@ namespace CV_Sajten.Migrations
                             Email = "anna.andersson@example.com",
                             Namn = "Anna Andersson",
                             isPrivat = true
+                        },
+                        new
+                        {
+                            ID = 21,
+                            BildAdress = "https://example.com/images/erik.jpg",
+                            Email = "erik.svensson@example.com",
+                            Namn = "Erik Svensson",
+                            isPrivat = false
                         });
                 });
 

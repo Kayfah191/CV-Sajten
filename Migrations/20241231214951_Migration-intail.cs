@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace CV_Sajten.Migrations
 {
     /// <inheritdoc />
-    public partial class mm : Migration
+    public partial class Migrationintail : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,12 +53,16 @@ namespace CV_Sajten.Migrations
             migrationBuilder.InsertData(
                 table: "Anvandares",
                 columns: new[] { "ID", "BildAdress", "Email", "Namn", "isPrivat" },
-                values: new object[] { 1, "https://example.com/images/anna.jpg", "anna.andersson@example.com", "Anna Andersson", true });
+                values: new object[,]
+                {
+                    { 1, "https://example.com/images/anna.jpg", "anna.andersson@example.com", "Anna Andersson", true },
+                    { 21, "https://example.com/images/erik.jpg", "erik.svensson@example.com", "Erik Svensson", false }
+                });
 
             migrationBuilder.InsertData(
                 table: "Cvs",
                 columns: new[] { "ID", "AnvandareID", "Erfarenheter", "Kompetenser", "Utbildning" },
-                values: new object[] { 1, 1001, "3 års erfarenhet som systemutvecklare på TechCorp", "C#, .NET, SQL, Azure", "Civilingenjör i Datateknik, KTH" });
+                values: new object[] { 1, 1, "3 års erfarenhet som systemutvecklare på TechCorp", "C#, .NET, SQL, Azure", "Civilingenjör i Datateknik, KTH" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cvs_AnvandareID",

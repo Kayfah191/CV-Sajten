@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CV_Sajten.Migrations
 {
     [DbContext(typeof(DatabasContext))]
-    [Migration("20241230134405_mm")]
-    partial class mm
+    [Migration("20241231214951_Migration-intail")]
+    partial class Migrationintail
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -59,6 +59,14 @@ namespace CV_Sajten.Migrations
                             Email = "anna.andersson@example.com",
                             Namn = "Anna Andersson",
                             isPrivat = true
+                        },
+                        new
+                        {
+                            ID = 21,
+                            BildAdress = "https://example.com/images/erik.jpg",
+                            Email = "erik.svensson@example.com",
+                            Namn = "Erik Svensson",
+                            isPrivat = false
                         });
                 });
 
@@ -95,7 +103,7 @@ namespace CV_Sajten.Migrations
                         new
                         {
                             ID = 1,
-                            AnvandareID = 1001,
+                            AnvandareID = 1,
                             Erfarenheter = "3 års erfarenhet som systemutvecklare på TechCorp",
                             Kompetenser = "C#, .NET, SQL, Azure",
                             Utbildning = "Civilingenjör i Datateknik, KTH"
