@@ -2,7 +2,7 @@
 
 namespace CV_Sajten.Models
 {
-	public class Registrera
+	public class Registrering
 	{
 		[Required(ErrorMessage = "Vänligen skriv ett användarnamn.")]
 		[StringLength(255)]

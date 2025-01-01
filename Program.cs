@@ -1,4 +1,5 @@
 using CV_Sajten.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace CV_Sajten
@@ -14,6 +15,10 @@ namespace CV_Sajten
 
             builder.Services.AddDbContext<DatabasContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DatabasContext")));
+            builder.Services.AddIdentity<User,
+IdentityRole>().AddEntityFrameworkStores<DatabasContext>().AddDefaultTokenProviders(
+);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,6 +34,9 @@ namespace CV_Sajten
 
             app.UseRouting();
 
+            app.UseAuthorization();
+            app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
