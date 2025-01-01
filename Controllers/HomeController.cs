@@ -9,8 +9,8 @@ namespace CV_Sajten.Controllers
 
     {
 
-        private DatabasContext anvandare;
-
+        
+        private DatabasContext cv;
 
 
         private readonly ILogger<HomeController> _logger;
@@ -18,12 +18,14 @@ namespace CV_Sajten.Controllers
         public HomeController(ILogger<HomeController> logger, DatabasContext AnvandareService)
         {
             _logger = logger;
-            anvandare = AnvandareService;
+            cv = AnvandareService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IQueryable<Cv> cvList = from cv in cv.Cvs select cv;
+            
+            return View(cvList.ToList());
         }
 
         public IActionResult Privacy()

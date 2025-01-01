@@ -1,8 +1,60 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<Cv>
+
+@{
+    ViewData["Title"] = "CV Lista";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form method="post" asp-controller="Account" asp-action="Logout">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h4>Du är inloggad som @User.Identity.Name</h4>
+        <input type="submit" value="Logga ut" />
+    }
+</form>
+
+<form asp-action="Index" method="get">
+    <label>Filtrera baserat på AnvandareID: </label>
+    <input type="text" name="id" />
+    <button type="submit">Filtrera!</button>
+</form>
+
+<h2>Nuvarande CV-lista:</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Kompetenser</th>
+            <th>Utbildning</th>
+            <th>Erfarenheter</th>
+            <th>AnvandareID</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cv in Model)
+        {
+            <tr>
+                <td>@cv.Id</td>
+                <td>@cv.Kompetenser</td>
+                <td>@cv.Utbildning</td>
+                <td>@cv.Erfarenheter</td>
+                <td>@cv.AnvandareID</td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td><a asp-controller="Cv" asp-action="Remove" asp-route-id="@cv.Id">Radera</a></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Cv" asp-action="Add">Lägg till nytt CV</a>
+<br />
+<br />
+<br />
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <a asp-action="Login" asp-controller="Account">Logga in</a>
+}
