@@ -54,7 +54,31 @@ namespace CV_Sajten.Models
                       Utbildning = "Civilingenjör i Datateknik, KTH",
                       Erfarenheter = "3 års erfarenhet som systemutvecklare på TechCorp",
                       AnvandareID = 21
-                  }
+                  },
+                     new Cv
+                     {
+                         Id = 3,
+                         Kompetenser = "C#, .NET, SQL, Azure",
+                         Utbildning = "Civilingenjör i Datateknik, KTH",
+                         Erfarenheter = "3 års erfarenhet som systemutvecklare på TechCorp",
+                         AnvandareID = 1
+                     },
+                        new Cv
+                        {
+                            Id = 4,
+                            Kompetenser = "C#, .NET, SQL, Azure",
+                            Utbildning = "Civilingenjör i Datateknik, KTH",
+                            Erfarenheter = "3 års erfarenhet som systemutvecklare på TechCorp",
+                            AnvandareID = 1
+                        },
+                           new Cv
+                           {
+                               Id = 5,
+                               Kompetenser = "C#, .NET, SQL, Azure",
+                               Utbildning = "Civilingenjör i Datateknik, KTH",
+                               Erfarenheter = "3 års erfarenhet som systemutvecklare på TechCorp",
+                               AnvandareID = 1
+                           }
 
             );
         }

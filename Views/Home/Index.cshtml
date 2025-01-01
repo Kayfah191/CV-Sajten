@@ -4,57 +4,79 @@
     ViewData["Title"] = "CV Lista";
 }
 
-<form method="post" asp-controller="Account" asp-action="Logout">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <h4>Du är inloggad som @User.Identity.Name</h4>
-        <input type="submit" value="Logga ut" />
-    }
-</form>
 
-<form asp-action="Index" method="get">
-    <label>Filtrera baserat på AnvandareID: </label>
-    <input type="text" name="id" />
-    <button type="submit">Filtrera!</button>
-</form>
+<div class="container mt-4">
 
-<h2>Nuvarande CV-lista:</h2>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Kompetenser</th>
-            <th>Utbildning</th>
-            <th>Erfarenheter</th>
-            <th>AnvandareID</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var cv in Model)
-        {
-            <tr>
-                <td>@cv.Id</td>
-                <td>@cv.Kompetenser</td>
-                <td>@cv.Utbildning</td>
-                <td>@cv.Erfarenheter</td>
-                <td>@cv.AnvandareID</td>
+  
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" asp-controller="Account" asp-action="Logout">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <td><a asp-controller="Cv" asp-action="Remove" asp-route-id="@cv.Id">Radera</a></td>
+                    <div class="alert alert-info">
+                        Du är inloggad som <strong>@User.Identity.Name</strong>
+                    </div>
+                    <input type="submit" value="Logga ut" class="btn btn-danger" />
                 }
-            </tr>
-        }
-    </tbody>
-</table>
+            </form>
+        </div>
+    </div>
 
-<a asp-controller="Cv" asp-action="Add">Lägg till nytt CV</a>
-<br />
-<br />
-<br />
+    
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Index" method="get" class="mb-4">
+                <div class="form-group">
+                    <label for="id">Filtrera baserat på AnvandareID:</label>
+                    <input type="text" name="id" id="id" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">Filtrera!</button>
+            </form>
+        </div>
+    </div>
 
-@if (!User.Identity.IsAuthenticated)
-{
-    <a asp-action="Login" asp-controller="Account">Logga in</a>
-}
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Nuvarande CV-lista</h2>
+
+            <div class="row">
+                @foreach (var cv in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">CV-ID: @cv.Id</h5>
+                                <p class="card-text"><strong>Kompetenser:</strong> @cv.Kompetenser</p>
+                                <p class="card-text"><strong>Utbildning:</strong> @cv.Utbildning</p>
+                                <p class="card-text"><strong>Erfarenheter:</strong> @cv.Erfarenheter</p>
+                                <p class="card-text"><strong>Användar-ID:</strong> @cv.AnvandareID</p>
+
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a asp-controller="Cv" asp-action="Remove" asp-route-id="@cv.Id" class="btn btn-danger btn-sm">Radera</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+          
+            <div class="text-left">
+                <a asp-controller="Cv" asp-action="Add" class="btn btn-success">Lägg till nytt CV</a>
+            </div>
+        </div>
+    </div>
+
+   
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="col-md-12 text-left mt-4">
+                <a asp-action="Login" asp-controller="Account" class="btn btn-primary">Logga in</a>
+            </div>
+        </div>
+    }
+
+</div>
