@@ -15,9 +15,12 @@ namespace CV_Sajten
 
             builder.Services.AddDbContext<DatabasContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DatabasContext")));
+           
+            
+            
             builder.Services.AddIdentity<User,
-IdentityRole>().AddEntityFrameworkStores<DatabasContext>().AddDefaultTokenProviders(
-);
+            IdentityRole>().AddEntityFrameworkStores<DatabasContext>().AddDefaultTokenProviders(
+            );
 
             var app = builder.Build();
 
