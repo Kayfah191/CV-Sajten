@@ -39,25 +39,27 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="text-center mb-4"> CV-lista</h2>
-
             <div class="row">
                 @foreach (var cv in Model)
                 {
                     <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">CV-ID: @cv.Id</h5>
-                                <p class="card-text"><strong>Kompetenser:</strong> @cv.Kompetenser</p>
-                                <p class="card-text"><strong>Utbildning:</strong> @cv.Utbildning</p>
-                                <p class="card-text"><strong>Erfarenheter:</strong> @cv.Erfarenheter</p>
-                                <p class="card-text"><strong>Användar-ID:</strong> @cv.AnvandareID</p>
-
-                                @if (User.Identity.IsAuthenticated)
-                                {
-                                    <a asp-controller="Cv" asp-action="Remove" asp-route-id="@cv.Id" class="btn btn-danger btn-sm">Radera</a>
-                                }
+                        
+                        <a asp-controller="Account" asp-action="Profil" asp-route-id="@cv.Id" class="card-link">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">CV-ID: @cv.Id</h5>
+                                    <p class="card-text"><strong>Kompetenser:</strong> @cv.Kompetenser</p>
+                                    <p class="card-text"><strong>Utbildning:</strong> @cv.Utbildning</p>
+                                    <p class="card-text"><strong>Erfarenheter:</strong> @cv.Erfarenheter</p>
+                                    <p class="card-text"><strong>Användar-ID:</strong> @cv.AnvandareID</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+                       
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-controller="Cv" asp-action="Remove" asp-route-id="@cv.Id" class="btn btn-danger btn-sm">Radera</a>
+                        }
                     </div>
                 }
             </div>

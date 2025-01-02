@@ -1,0 +1,26 @@
+﻿@model CV_Sajten.Models.Cv
+
+@{
+    ViewData["Title"] = "CV för @Model.AnvandareID";
+}
+
+<div class="container mt-4">
+    <h2>Profil för användare: @Model.AnvandareID</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Användar-ID: @Model.AnvandareID</h5>
+            <p><strong>Kompetenser:</strong> @Model.Kompetenser</p>
+            <p><strong>Utbildning:</strong> @Model.Utbildning</p>
+            <p><strong>Erfarenheter:</strong> @Model.Erfarenheter</p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="@Url.Action("Edit", "Account", new { id = Model.Id })" class="btn btn-warning">Redigera profil</a>
+    </div>
+
+    <div class="mt-4">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Tillbaka till CV-listan</a>
+    </div>
+</div>
