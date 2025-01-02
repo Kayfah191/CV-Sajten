@@ -11,8 +11,9 @@ namespace CV_Sajten.Controllers
         private DatabasContext _context;
         private UserManager<User> userManager;
         private SignInManager<User> signInManager;
+        private Anvandare anvandare;
         public AccountController(UserManager<User> userMngr,
-        SignInManager<User> signInMngr,DatabasContext context)
+        SignInManager<User> signInMngr, DatabasContext context)
         {
             this.userManager = userMngr;
             this.signInManager = signInMngr;
@@ -88,7 +89,7 @@ namespace CV_Sajten.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Profil(int id)
+        public async Task<IActionResult> Profilss(int id)
         {
 
             Console.WriteLine($"Profilmetod anropad med id: {id}");
@@ -102,5 +103,39 @@ namespace CV_Sajten.Controllers
 
             return View(cv);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Profil(int id)
+        {
+            
+            var cv = await _context.Cvs
+                                   .FirstOrDefaultAsync(c => c.Id == id); 
+
+            Console.WriteLine($"CV för användare: {cv?.Id}");
+
+            if (cv == null)
+            {
+                return NotFound();
+            }
+
+            var anvandare = await _context.Anvandares
+                                           .FirstOrDefaultAsync(u => u.ID == cv.AnvandareID);
+
+            Console.WriteLine($"Anvandare som hittades: {anvandare?.Namn}");
+
+            if (anvandare == null)
+            {
+                return NotFound();
+            }
+
+            
+            var model = new ProfilViewModel
+            {
+                Anvandare = anvandare,
+                Cv = cv
+            };
+
+            return View(model);
+        }
     }
-}
+    }

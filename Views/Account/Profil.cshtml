@@ -1,23 +1,31 @@
-﻿@model CV_Sajten.Models.Cv
+﻿@model CV_Sajten.Models.ProfilViewModel
 
 @{
-    ViewData["Title"] = "CV för @Model.AnvandareID";
+    ViewData["Title"] = "Profil för @Model.Anvandare.Namn";
 }
 
 <div class="container mt-4">
-    <h2>Profil för användare: @Model.AnvandareID</h2>
+    <h2>Profil för användare: @Model.Anvandare.Namn</h2>
 
     <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Användar-ID: @Model.AnvandareID</h5>
-            <p><strong>Kompetenser:</strong> @Model.Kompetenser</p>
-            <p><strong>Utbildning:</strong> @Model.Utbildning</p>
-            <p><strong>Erfarenheter:</strong> @Model.Erfarenheter</p>
+        <div class="card-body d-flex align-items-center">
+           
+            @if (!string.IsNullOrEmpty(Model.Anvandare.BildAdress))
+            {
+                <img src="@Model.Anvandare.BildAdress" alt="Profilbild" class="img-fluid rounded-circle" style="width: 150px; height: 150px; margin-right: 20px;" />
+            }
+
+            <div>
+                <h5 class="card-title">Användar-ID: @Model.Anvandare.Namn</h5>
+                <p><strong>Kompetenser:</strong> @Model.Cv.Kompetenser</p>
+                <p><strong>Utbildning:</strong> @Model.Cv.Utbildning</p>
+                <p><strong>Erfarenheter:</strong> @Model.Cv.Erfarenheter</p>
+            </div>
         </div>
     </div>
 
     <div class="mt-4">
-        <a href="@Url.Action("Edit", "Account", new { id = Model.Id })" class="btn btn-warning">Redigera profil</a>
+        <a href="@Url.Action("Edit", "Account", new { id = Model.Anvandare.ID })" class="btn btn-warning">Redigera profil</a>
     </div>
 
     <div class="mt-4">
