@@ -1,0 +1,31 @@
+﻿@model Cv
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<h2>Lägg till nytt CV:</h2>
+
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Kompetenser" class="control-label"></label>
+        <input asp-for="Kompetenser" class="form-control" />
+        <span asp-validation-for="Kompetenser" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Utbildning" class="control-label"></label>
+        <input asp-for="Utbildning" class="form-control" />
+        <span asp-validation-for="Utbildning" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Erfarenheter" class="control-label"></label>
+        <input asp-for="Erfarenheter" class="form-control" />
+        <span asp-validation-for="Erfarenheter" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AnvandareID" class="control-label"></label>
+        <select asp-items="@ViewBag.options" asp-for="AnvandareID" class="form-control"></select>
+        <span asp-validation-for="AnvandareID" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Lägg till</button>
+</form>
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Tillbaka</a>
