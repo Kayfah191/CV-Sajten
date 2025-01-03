@@ -33,6 +33,9 @@ namespace CV_Sajten.Controllers
             {
                 User anvandare = new User();
                 anvandare.UserName = registerViewModel.AnvandarNamn;
+                anvandare.Email = registerViewModel.Epost;
+                anvandare.PhoneNumber = registerViewModel.TelefonNummer;
+            
                 var result =
                 await userManager.CreateAsync(anvandare, registerViewModel.Losenord);
                 if (result.Succeeded)

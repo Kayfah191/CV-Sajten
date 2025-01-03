@@ -5,10 +5,6 @@ namespace CV_Sajten.Models
 	public class Registrering
     {
 		
- [Required(ErrorMessage = "Vänligen skriv ditt namn.")]
-
-        [StringLength(255, ErrorMessage = "Namnet får inte vara längre än 255 tecken.")]
-        public string Namn { get; set; }
         [Required(ErrorMessage = "Vänligen skriv ett användarnamn.")]
         [StringLength(255)]
         public string AnvandarNamn { get; set; }
